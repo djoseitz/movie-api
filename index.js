@@ -7,42 +7,52 @@ let topMovies = [
     {
       title: 'Raiders of the Lost Ark',
       director: 'Steven Spielberg'
+      genre: 'Adventure'
     },
     {
       title: 'Dark City',
       director: 'Alex Proyas'
+      genre: 'Horror'
     },
     {
       title: 'Coraline',
       director: 'Henry Selick'
+      genre: 'Adventure'
     },
     {
         title: 'The Empire Strikes Back',
         director: 'Irvin Kershner'
+        genre: 'Sci-Fi'
     },
     {
         title: 'Alien',
         director: 'Ridley Scott'
+        genre: 'Horror'
     },
     {
         title: 'The Hunt for Red October',
         director: 'John McTiernan'
+        genre: 'Thriller'
     },
     {
         title: 'Baby Driver',
         director: 'Edgar Wright'
+        genre: 'Thriller'
     },
     {
         title: 'Hot Fuzz',
         director: 'Edgar Wright'
+        genre: 'Action'
     },
     {
         title: 'Akira',
         director: 'Katsuhiro Otomo'
+        genre: 'Sci-Fi'
     },
     {
         title: 'The Lord of the Rings',
         director: 'Peter Jackson'
+        genre: 'Adventure'
     },
 ];
 
