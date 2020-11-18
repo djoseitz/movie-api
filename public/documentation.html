@@ -11,60 +11,90 @@
         <th>Request</th>
         <th>URL</th>
         <th>HTTP Method</th>
-        <th>Response</th>
+        <th>Request Body Data Format</th>
+        <th>Response Body Data Format</th>
     </tr>
     <tr>
         <td>Get a list of movies</td>
         <td>/movies</td>
         <td>GET</td>
+        <td>None</td>
         <td>A JSON object holding data about all movies</td>
     </tr>
     <tr>
         <td>Get data about a single movie by title</td>
         <td>/movies/[TITLE]</td>
         <td>GET</td>
-        <td>A JSON object holding data about a single movie</td>
+        <td>None</td>
+        <td>A JSON object holding data about a single movie. Example:
+            <br/>
+            {
+            <br/>
+                title: 'Raiders of the Lost Ark',
+            <br/>
+                director: 'Steven Spielberg',
+            <br/>
+                description: 'Adventure'
+            <br/>
+              },
+        </td>
     </tr>
     <tr>
         <td>Get data about a genre by name</td>
         <td>/movies/genre/[NAME]</td>
         <td>GET</td>
+        <td>None</td>
         <td>A JSON object holding data about a genre of movies</td>
     </tr>
     <tr>
         <td>Get data about a director by name</td>
         <td>/movies/directors/[NAME]</td>
         <td>GET</td>
+        <td>None</td>
         <td>A JSON object holding data about a director</td>
     </tr>
     <tr>
         <td>Allow new users to register</td>
         <td>/users</td>
         <td>POST</td>
+        <td>A JSON object holding data about the user to add. Example:
+            <br/>
+            {
+            <br/>
+                name: 'John Smith'
+            <br/>
+                username: 'jsmith'
+            <br/>
+            }
+        </td>
         <td>A text message indicating whether the user was successfully added</td>
     </tr>
     <tr>
         <td>Allow users to update their info (username)</td>
         <td>/users/[NAME]/info/[USERNAME]</td>
         <td>PUT</td>
+        <td>None</td>
         <td>A text message indicating the user and the updated username</td>
     </tr>
     <tr>
         <td>Allow users to add a movie to their list of favorites</td>
         <td>/users/[NAME]/favorites/[TITLE]</td>
         <td>POST</td>
+        <td>None</td>
         <td>A text message indicating whether the movie was successfully added</td>
     </tr>
     <tr>
         <td>Allow users to remove a movie from their list of favorites</td>
         <td>/users/[NAME]/favorites/[TITLE]</td>
         <td>DELETE</td>
+        <td>None</td>
         <td>A text message indicating whether the movie was successfully removed</td>
     </tr>
     <tr>
         <td>Allow existing users to deregister</td>
         <td>/users</td>
         <td>DELETE</td>
+        <td>None</td>
         <td>A text message indicating whether the user was successfully removed</td>
     </tr>
 </table>
