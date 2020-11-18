@@ -41,7 +41,7 @@ let topMovies = [
         director: 'Katsuhiro Otomo'
     },
     {
-        title: 'The Lord of the Rings (trilogy)',
+        title: 'The Lord of the Rings',
         director: 'Peter Jackson'
     },
 ];
@@ -57,15 +57,47 @@ app.get('/movies', (req, res) => {
 res.json(topMovies);
 });
 
+app.get('/movies/[TITLE]', (req, res) => {
+    res.send('Successful GET request returning data on a specific movie by name');
+});
+
+app.get('/movies/genre/[NAME]', (req, res) => {
+    res.send('Successful GET request returning data about a genre of movies');
+});
+
+app.get('/movies/directors/[NAME]', (req, res) => {
+    res.send('Successful GET request returning data about a director');
+});
+
+app.post('/users', (req, res) => {
+    res.send('Successful POST request returning a text message indicating whether the user was successfully added');
+});
+
+app.put('/users/[NAME]/info/[USERNAME]', (req, res) => {
+    res.send('Successful PUT request returning a text message indicating the user and the updated username');
+});
+
+app.post('/users/[NAME]/favorites/[TITLE]', (req, res) => {
+    res.send('Successful POST request returning a text message indicating whether the movie was successfully added');
+});
+
+app.delete('/users/[NAME]/favorites/[TITLE]', (req, res) => {
+    res.send('Successful DELETE request returning a text message indicating whether the movie was successfully removed');
+});
+
+app.delete('/users', (req, res) => {
+    res.send('Successful DELETE request returning a text message indicating whether the user was successfully removed');
+});
+
 app.use(express.static('public'));
 
 //Error Handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('ERROR! Does not compute!');
-  });
+});
 
 // listen for requests
-app.listen(8080, () =>
-console.log('Your app is listening on port 8080.');
-);
+app.listen(8080, () => {
+    console.log('Your app is listening on port 8080');
+  });
