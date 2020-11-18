@@ -6,53 +6,53 @@ const app = express();
 let topMovies = [
     {
       title: 'Raiders of the Lost Ark',
-      director: 'Steven Spielberg'
-      genre: 'Adventure'
+      director: 'Steven Spielberg',
+      description: 'Adventure'
     },
     {
       title: 'Dark City',
-      director: 'Alex Proyas'
-      genre: 'Horror'
+      director: 'Alex Proyas',
+      description: 'Horror'
     },
     {
       title: 'Coraline',
-      director: 'Henry Selick'
-      genre: 'Adventure'
+      director: 'Henry Selick',
+      description: 'Adventure'
     },
     {
         title: 'The Empire Strikes Back',
-        director: 'Irvin Kershner'
-        genre: 'Sci-Fi'
+        director: 'Irvin Kershner',
+        description: 'Sci-Fi'
     },
     {
         title: 'Alien',
-        director: 'Ridley Scott'
-        genre: 'Horror'
+        director: 'Ridley Scott',
+        description: 'Horror'
     },
     {
         title: 'The Hunt for Red October',
-        director: 'John McTiernan'
-        genre: 'Thriller'
+        director: 'John McTiernan',
+        description: 'Thriller'
     },
     {
         title: 'Baby Driver',
-        director: 'Edgar Wright'
-        genre: 'Thriller'
+        director: 'Edgar Wright',
+        desrcription: 'Thriller'
     },
     {
         title: 'Hot Fuzz',
-        director: 'Edgar Wright'
-        genre: 'Action'
+        director: 'Edgar Wright',
+        description: 'Action'
     },
     {
         title: 'Akira',
-        director: 'Katsuhiro Otomo'
-        genre: 'Sci-Fi'
+        director: 'Katsuhiro Otomo',
+        description: 'Sci-Fi'
     },
     {
         title: 'The Lord of the Rings',
-        director: 'Peter Jackson'
-        genre: 'Adventure'
+        director: 'Peter Jackson',
+        description: 'Adventure'
     },
 ];
 
@@ -67,15 +67,15 @@ app.get('/movies', (req, res) => {
 res.json(topMovies);
 });
 
-app.get('/movies/[TITLE]', (req, res) => {
+app.get('/movies/:title', (req, res) => {
     res.send('Successful GET request returning data on a specific movie by name');
 });
 
-app.get('/movies/genre/[NAME]', (req, res) => {
+app.get('/movies/genre/:name', (req, res) => {
     res.send('Successful GET request returning data about a genre of movies');
 });
 
-app.get('/movies/directors/[NAME]', (req, res) => {
+app.get('/movies/directors/:name', (req, res) => {
     res.send('Successful GET request returning data about a director');
 });
 
@@ -83,19 +83,19 @@ app.post('/users', (req, res) => {
     res.send('Successful POST request returning a text message indicating whether the user was successfully added');
 });
 
-app.put('/users/[NAME]/info/[USERNAME]', (req, res) => {
+app.put('/users/:name/info/:username', (req, res) => {
     res.send('Successful PUT request returning a text message indicating the user and the updated username');
 });
 
-app.post('/users/[NAME]/favorites/[TITLE]', (req, res) => {
+app.post('/users/:name/favorites/:title', (req, res) => {
     res.send('Successful POST request returning a text message indicating whether the movie was successfully added');
 });
 
-app.delete('/users/[NAME]/favorites/[TITLE]', (req, res) => {
+app.delete('/users/:name/favorites/:title', (req, res) => {
     res.send('Successful DELETE request returning a text message indicating whether the movie was successfully removed');
 });
 
-app.delete('/users', (req, res) => {
+app.delete('/users/:name', (req, res) => {
     res.send('Successful DELETE request returning a text message indicating whether the user was successfully removed');
 });
 
