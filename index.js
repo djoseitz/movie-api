@@ -3,7 +3,7 @@ morgan = require('morgan');
 
 const app = express();
 
-let topMovies = [
+let movies = [
     {
       title: 'Raiders of the Lost Ark',
       director: 'Steven Spielberg',
@@ -64,7 +64,7 @@ res.send('Welcome to my movie hub, I hope you enjoy it!');
 });
 
 app.get('/movies', (req, res) => {
-res.json(topMovies);
+res.json(movies);
 });
 
 app.get('/movies/:title', (req, res) => {
