@@ -1,3 +1,11 @@
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/CineFanDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
 const express = require('express');
 morgan = require('morgan');
 
@@ -79,9 +87,52 @@ app.get('/movies/directors/:name', (req, res) => {
     res.send('Successful GET request returning data about a director');
 });
 
+//Add a user
+/*We'll expect JSON in this format
+{
+    ID: Integer,
+    Username: String,
+    Password: String,
+    Email: String,
+    Birthday: Date
+}*/
 app.post('/users', (req, res) => {
-    res.send('Successful POST request returning a text message indicating whether the user was successfully added');
+    Users.findOne({ Username: req.body.Username})
+        .then((user) => {
+            if (user) {
+                return res.status(400).send(req.body.Username + 'already exists');
+            } else {
+                Users
+                    .create({
+                        Username: req.body.Username,
+                        Password: req.body.Password,
+                        Email: req.body.Email,
+                        Birthday: req.body.Birthday
+                    })
+                    .then((user) =>{res.status(201).json(user) })
+                .catch((error) => {
+                    console.error(error);
+                    res.status(500).send('Error: ' + error);
+                })
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
 });
+
+// Get all users
+app.get('/users', (req, res) => {
+    Users.findOne({ Username: req.params.Username })
+        .then((user) => {
+            res.json(user);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        })
+})
 
 app.put('/users/:name/info/:username', (req, res) => {
     res.send('Successful PUT request returning a text message indicating the user and the updated username');
@@ -104,7 +155,7 @@ app.use(express.static('public'));
 //Error Handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('ERROR! Does not compute!');
+    res.status(500).send('ERROR! Does not compute! ' + err);
 });
 
 // listen for requests
