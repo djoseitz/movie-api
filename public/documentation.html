@@ -190,21 +190,95 @@
                 <br/>
             }
         </td>
-        <td>A text message indicating whether the user was successfully added</td>
+        <td>A JSON object displaying the new user info. Example:
+            <br/>
+            {
+                <br/>
+                "FavoriteMovies": [],
+                <br/>
+                "_id": "5fcaaad3507b481e65bb2e27",
+                <br/>
+                "Username": "testUser1",
+                <br/>
+                "Password": "testPassword",
+                <br/>
+                "Email": "testUser1@test.com",
+                <br/>
+                "Birthday": "1985-08-08T07:00:00.000Z",
+                <br/>
+                "__v": 0
+                <br/>
+            }
+        </td>
     </tr>
     <tr>
         <td>Allow users to update their info (username)</td>
         <td>/users/[NAME]/info/[USERNAME]</td>
         <td>PUT</td>
-        <td>None</td>
-        <td>A text message indicating the user and the updated username</td>
+        <td>A JSON object holding data about the user to update. Example:
+            <br/>
+            {
+                <br/>
+                "Username" : "testUser1", (REQUIRED)
+                <br/>
+                "Password" : "testPassword", (REQUIRED)
+                <br/>
+                "Email" : "testUser1@test.com", (REQUIRED)
+                <br/>
+                "Birthday" : "1982-03-15"
+                <br/>
+            }
+        </td>
+        <td>A JSON object displaying the updated user info. Example:
+            <br/>
+            {
+                <br/>
+                "FavoriteMovies": [],
+                <br/>
+                "_id": "5fcaaad3507b481e65bb2e27",
+                <br/>
+                "Username": "testUser1",
+                <br/>
+                "Password": "testPassword",
+                <br/>
+                "Email": "testUser1@test.com",
+                <br/>
+                "Birthday": "1982-03-15T00:00:00.000Z",
+                <br/>
+                "__v": 0
+                <br/>
+            }
+        </td>
     </tr>
     <tr>
         <td>Allow users to add a movie to their list of favorites</td>
-        <td>/users/[NAME]/favorites/[TITLE]</td>
+        <td>/users/[NAME]/movies/[MOVIE_ID]</td>
         <td>POST</td>
         <td>None</td>
-        <td>A text message indicating whether the movie was successfully added</td>
+        <td>A JSON object displaying the updated user info. Example:
+            <br/>
+            {
+                <br/>
+                "FavoriteMovies": [
+                <br/>
+                    "5fc05013c99793ae9ea99c0e"
+                    <br/>
+                ],
+                <br/>
+                "_id": "5fcaaad3507b481e65bb2e27",
+                <br/>
+                "Username": "testUser1",
+                <br/>
+                "Password": "testPassword",
+                <br/>
+                "Email": "testUser1@test.com",
+                <br/>
+                "Birthday": "1982-03-15T00:00:00.000Z",
+                <br/>
+                "__v": 0
+                <br/>
+            }
+        </td>
     </tr>
     <tr>
         <td>Allow users to remove a movie from their list of favorites</td>
