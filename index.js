@@ -71,17 +71,41 @@ app.get('/', (req, res) => {
 res.send('Welcome to my movie hub, I hope you enjoy it!');
 });
 
+// Get all movies
 app.get('/movies', (req, res) => {
-res.json(movies);
-});
+    Movies.find()
+        .then((movies) => {
+            res.status(201).json(movies);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + error);
+        });
+})
 
-app.get('/movies/:title', (req, res) => {
-    res.send('Successful GET request returning data on a specific movie by name');
-});
+// Get a movie by title
+app.get('/movies/title', (req, res) => {
+    Movies.findOne({ Title: req.params.Titles })
+        .then((movies) => {
+            res.json(movies);
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
+})
 
+// Get a description of a genre
 app.get('/movies/genre/:name', (req, res) => {
-    res.send('Successful GET request returning data about a genre of movies');
-});
+    Movie.findOne({ 'Genre.Name': req.params.name })
+        .then((movie) => {
+            res.json(movie.Genre);
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
+})
 
 app.get('/movies/directors/:name', (req, res) => {
     res.send('Successful GET request returning data about a director');
@@ -125,13 +149,13 @@ app.post('/users', (req, res) => {
 // Get all users
 app.get('/users', (req, res) => {
     Users.findOne({ Username: req.params.Username })
-        .then((user) => {
-            res.json(user);
+        .then((users) => {
+            res.json(users);
         })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
-        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
 })
 
 app.put('/users/:name/info/:username', (req, res) => {
