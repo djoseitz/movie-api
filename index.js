@@ -96,8 +96,8 @@ app.get('/movies', (req, res) => {
 })
 
 // Return data about a single movie by title
-app.get('/movies/title', (req, res) => {
-    Movies.findOne({ Title: req.params.Titles })
+app.get('/movies/:Title', (req, res) => {
+    Movies.findOne({ Title: req.params.Title })
         .then((movies) => {
             res.json(movies);
         })
