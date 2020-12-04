@@ -164,7 +164,7 @@ app.get('/users', (req, res) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
-  });
+});
 
 // Get a user by username
 app.get('/users/:Username', (req, res) => {
@@ -199,12 +199,13 @@ app.put('/users/:Username', (req, res) => {
       }
     },
     { new: true }, // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-        res.json(updatedUser);
-    })
-    .catch((err) => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
+    (err, updatedUser) => {
+        if(err) {
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        } else {
+          res.json(updatedUser);
+        }
     });
 });
 
@@ -214,27 +215,29 @@ app.post('/users/:Username/Movies/:MovieID', (req, res) => {
         $addToSet: {FavoriteMovies: req.params.MovieID }
     },
     { new: true }, // This line makes sure the updated document is returned
-    .then((updatedUser) => {
-        res.json(updatedUser);
-    })
-    .catch((err) => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
+    (err, updatedUser) => {
+        if(err) {
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        } else {
+          res.json(updatedUser);
+        }
     });
 });
 
-// Add a movie to a user's list of favorites
+// Remove a movie from a user's list of favorites
 app.post('/users/:Username/Movies/:MovieID', (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username}, {
         $pull: {FavoriteMovies: req.params.MovieID }
     },
     { new: true }, // This line makes sure the updated document is returned
-    .then((updatedUser) => {
-        res.json(updatedUser);
-    })
-    .catch((err) => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
+    (err, updatedUser) => {
+        if(err) {
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        } else {
+          res.json(updatedUser);
+        }
     });
 });
 
