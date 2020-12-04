@@ -259,6 +259,17 @@ app.delete('/users/:Username', (req, res) => {
 
 app.use(express.static('public'));
 
+const bodyParser = require('body-parser'),
+  methodOverride = require('method-override');
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+app.use(methodOverride());
+
+
 //Error Handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
