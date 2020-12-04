@@ -11,6 +11,18 @@ morgan = require('morgan');
 
 const app = express();
 
+app.use(express.static('public'));
+
+const bodyParser = require('body-parser'),
+  methodOverride = require('method-override');
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+app.use(methodOverride());
+
 /* let movies = [
     {
       title: 'Raiders of the Lost Ark',
@@ -256,19 +268,6 @@ app.delete('/users/:Username', (req, res) => {
         res.status(500).send('Error: ' + err);
     });
 });
-
-app.use(express.static('public'));
-
-const bodyParser = require('body-parser'),
-  methodOverride = require('method-override');
-
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(bodyParser.json());
-app.use(methodOverride());
-
 
 //Error Handling
 app.use((err, req, res, next) => {
