@@ -19,7 +19,81 @@
         <td>/movies</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data about all movies</td>
+        <td>A JSON object holding data about all movies Example:
+            <br/>
+            [
+            <br/>
+                {
+                    <br/>
+                    "Genre": {
+                        <br/>
+                        "Name": "Thriller",
+                        <br/>
+                        "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement or suspense in the audience."
+                    },
+                    <br/>
+                    "Director": {
+                        <br/>
+                        "Name": "Jonathan Demme",
+                        <br/>
+                        "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+                        <br/>
+                        "Birth": "1944",
+                        <br/>
+                        "Death": "2017"
+                        <br/>
+                    },
+                    <br/>
+                    "Actors": [],
+                    <br/>
+                    "_id": "5fc025f8a892dcae8427ea29",
+                    <br/>
+                    "Title": "Silence of the Lambs",
+                    <br/>
+                    "Description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer.",
+                    <br/>
+                    "ImagePath": "silenceofthelambs.png",
+                    <br/>
+                    "Featured": false
+                    <br/>
+                },
+                <br/>
+                {
+                    <br/>
+                    "Genre": {<br/>
+                        "Name": "Sci-Fi",
+                        <br/>
+                        "Description": "Science fiction (or sci-fi) is a film genre that uses speculative, fictional science-based depictions of phenomena that are not fully accepted by mainstream science, such as extraterrestrial lifeforms, alien worlds, extrasensory perception and time travel, along with futuristic elements such as spacecraft, robots, cyborgs, interstellar travel or other technologies."
+                        <br/>
+                    },
+                    <br/>
+                    "Director": {
+                        <br/>
+                        "Name": "Irvin Kershner",
+                        <br/>
+                        "Bio": "A graduate of the University of Southern California film school, Kershner began his career in 1950, producing documentaries for the United States Information Service in the Middle East. The main theme that runs through many of his films is social alienation and human weaknesses.",
+                        <br/>
+                        "Birth": "1963",
+                        <br/>
+                        "Death": "2010"
+                        <br/>
+                    },<br/>
+                    "Actors": [],
+                    <br/>
+                    "_id": "5fc048d9c99793ae9ea99c09",
+                    <br/>
+                    "Title": "The Empire Strikes Back",
+                    <br/>
+                    "Description": "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader.",
+                    <br/>
+                    "ImagePath": "theempirestrikesback.png",
+                    <br/>
+                    "Featured": false
+                    <br/>
+                },
+                <br/>
+                ...
+        </td>
     </tr>
     <tr>
         <td>Get data about a single movie by title</td>
@@ -29,14 +103,39 @@
         <td>A JSON object holding data about a single movie. Example:
             <br/>
             {
-            <br/>
-                title: 'Raiders of the Lost Ark',
-            <br/>
-                director: 'Steven Spielberg',
-            <br/>
-                description: 'Adventure'
-            <br/>
-              },
+                <br/>
+                "Genre": {
+                    <br/>
+                    "Name": "Thriller",
+                    <br/>
+                    "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement or suspense in the audience."
+                },
+                <br/>
+                "Director": {
+                    <br/>
+                    "Name": "Jonathan Demme",
+                    <br/>
+                    "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+                    <br/>
+                    "Birth": "1944",
+                    <br/>
+                    "Death": "2017"
+                    <br/>
+                },
+                <br/>
+                "Actors": [],
+                <br/>
+                "_id": "5fc025f8a892dcae8427ea29",
+                <br/>
+                "Title": "Silence of the Lambs",
+                <br/>
+                "Description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer.",
+                <br/>
+                "ImagePath": "silenceofthelambs.png",
+                <br/>
+                "Featured": false
+                <br/>
+            },
         </td>
     </tr>
     <tr>
@@ -44,14 +143,34 @@
         <td>/movies/genre/[NAME]</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data about a genre of movies</td>
+        <td>A JSON object holding data about a genre of movies. Example:
+            <br/>
+            {
+                <br/>
+                "Name": "Adventure",
+                <br/>
+                "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+                <br/>
+            }
+        </td>
     </tr>
     <tr>
         <td>Get data about a director by name</td>
         <td>/movies/directors/[NAME]</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data about a director</td>
+        <td>A JSON object holding data about a director. Example:
+            <br/>
+            {
+                <br/>
+                "Name": "Alex Proyas",
+                <br/>
+                "Bio": "Alex Proyas has moved effortlessly between helming TV commercials and music videos to feature films.",
+                <br/>
+                "Birth": "1963"
+                <br/>
+            }
+        </td>
     </tr>
     <tr>
         <td>Allow new users to register</td>
