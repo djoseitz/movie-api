@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(methodOverride());
 
+let auth = require('./auth')(app);
+
 /* let movies = [
     {
       title: 'Raiders of the Lost Ark',
