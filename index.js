@@ -25,6 +25,9 @@ app.use(methodOverride());
 
 let auth = require('./auth')(app);
 
+const passport = require('passport');
+require('./passport');
+
 /* let movies = [
     {
       title: 'Raiders of the Lost Ark',
