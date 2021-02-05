@@ -33,7 +33,7 @@ require('./passport');
 app.use(morgan('common'));
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://cinefandb.herokuapp.com', 'https://cinefan.netlify.app', '*'];
 
 const { check, validationResult } = require('express-validator');
 
