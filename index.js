@@ -4,7 +4,6 @@ const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-console.log(process.env.CONNECTION_URI)
 //mongoose.connect('mongodb://localhost:27017/CineFanDB', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect('mongodb+srv://testuser1:testuser1@web-seitz.znmwo.mongodb.net/CineFanDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -54,7 +53,7 @@ app.get('/', (req, res) => {
 });
 
 // Return a list of all movies & data
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
