@@ -31,7 +31,7 @@ var auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
 
-var allowedOrigins = ["http://localhost:8080", "http://localhost:1234", "https://cinefan.netlify.app/", "*"];
+var allowedOrigins = ["http://localhost:8080", "http://localhost:1234", "https://cinefan.netlify.app/", "https://cinefandb.herokuapp.com/", "*"];
 
 app.use(
   cors({
