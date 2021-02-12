@@ -104,7 +104,7 @@ app.get("/movies/genres/:Name", function (req, res) {
 });
 
 //get list of users
-app.get("/users", function (
+app.get("/users", passport.authenticate("jwt", { session: false }), function (
   req,
   res
 ) {
