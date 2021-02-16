@@ -10,6 +10,8 @@ const app = express();
 const Movies = Models.Movie;
 const Users = Models.User;
 const { check, validationResult } = require("express-validator");
+app.use(bodyParser.json());
+app.use(cors());
 // local connection
 //mongoose.connect("mongodb://localhost:27017/myflixdb", {useNewUrlParser: true});
 mongoose.connect(
@@ -20,8 +22,7 @@ mongoose.connect(
 app.use(morgan("common"));
 app.use(express.static("public"));
 app.use("/client", express.static(path.join(__dirname, "client", "dist")));
-app.use(bodyParser.json());
-app.use(cors());
+
 
 app.get("/client/*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
